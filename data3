@@ -1,0 +1,2621 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "976fbb44",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from selenium import webdriver\n",
+    "from webdriver_manager.chrome import ChromeDriverManager\n",
+    "from selenium.webdriver.chrome.service import Service\n",
+    "from selenium.webdriver.common.by import By"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "707bfc2e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# pip install selenium"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "ecb594e6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# pip install webdriver-manager"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "5a107435",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "2c833936",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "url = \"https://www.melon.com/chart/\"\n",
+    "driver.get(url)  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "667307e9",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Ditto'"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "driver.find_element(By.XPATH,'//*[@id=\"lst50\"]/td[6]/div/div/div[1]/span/a').text"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "f6f60176",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tbody=driver.find_element(By.TAG_NAME,'tbody')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "0a77da08",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<selenium.webdriver.remote.webelement.WebElement (session=\"04d929c550baaaa639933faa98e20504\", element=\"996ec479-48d5-4934-9136-b31bf1826b01\")>"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tbody"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "c2f66899",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "100"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "len(tbody.find_elements(By.TAG_NAME,'tr'))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "e5cf196a",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Ditto'"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tbody.find_elements(By.TAG_NAME,'tr')[0].find_element(By.CLASS_NAME,'ellipsis.rank01').text"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "b030a757",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'OMG'"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tbody.find_elements(By.TAG_NAME,'tr')[1].find_element(By.CLASS_NAME,'ellipsis.rank01').text"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "d99d056c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Ditto\n",
+      "OMG\n",
+      "Hype boy\n",
+      "파이팅 해야지 (Feat. 이영지)\n",
+      "VIBE (feat. Jimin of BTS)\n",
+      "사건의 지평선\n",
+      "Sugar Rush Ride\n",
+      "ANTIFRAGILE\n",
+      "사랑은 늘 도망가\n",
+      "Attention\n",
+      "7시에 들어줘 (Feat. Peder Elias)\n",
+      "우리들의 블루스\n",
+      "LUNCH\n",
+      "After LIKE\n",
+      "Candy\n",
+      "다시 만날 수 있을까\n",
+      "Ay-Yo\n",
+      "Devil by the Window\n",
+      "London Boy\n",
+      "네버랜드를 떠나며\n",
+      "Polaroid\n",
+      "무지개\n",
+      "이제 나만 믿어요\n",
+      "Tinnitus (돌멩이가 되고 싶어)\n",
+      "아버지\n",
+      "Happy Fools (feat. Coi Leray)\n",
+      "LOVE DIVE\n",
+      "A bientot\n",
+      "Nxde\n",
+      "HOT\n",
+      "인생찬가\n",
+      "NOT SORRY (Feat. pH-1) (Prod. by Slom)\n",
+      "손이 참 곱던 그대\n",
+      "거침없이\n",
+      "사랑해 진짜\n",
+      "I Don't Think That I Like Her\n",
+      "연애편지\n",
+      "마지막 사랑\n",
+      "_WORLD\n",
+      "Monologue\n",
+      "새삥 (Prod. ZICO) (Feat. 호미들)\n",
+      "너의 모든 순간\n",
+      "Cookie\n",
+      "보금자리\n",
+      "Rush Hour (Feat. j-hope of BTS)\n",
+      "해요 (2022)\n",
+      "Good Boy Gone Bad\n",
+      "사랑인가 봐\n",
+      "돌고 돌아\n",
+      "LO$ER=LO♡ER\n",
+      "DJ\n",
+      "교환일기 (두밧두 와리와리)\n",
+      "Shut Down\n",
+      "0X1=LOVESONG (I Know I Love You) feat. Seori\n",
+      "Say I Love You\n",
+      "Fallin' Flower (Korean Ver.)\n",
+      "그대를 알고\n",
+      "CHEERS\n",
+      "Dreamers [Music from the FIFA World Cup Qatar 2022 Official Soundtrack] (Feat. FIFA Sound)\n",
+      "마이웨이 (MY WAY) (Prod. R.Tee)\n",
+      "네가 보고 싶은 건 자연스러운 거겠지\n",
+      "TOMBOY\n",
+      "Pink Venom\n",
+      "FEARLESS\n",
+      "잘가요\n",
+      "Skyscraper (摩天樓; 마천루)\n",
+      "Dynamite\n",
+      "니 번호가 뜨는 일\n",
+      "취중고백\n",
+      "내가 아니라도\n",
+      "그댄 행복에 살텐데 (2022)\n",
+      "Unholy\n",
+      "That's Hilarious\n",
+      "그때 그 순간 그대로 (그그그)\n",
+      "그라데이션\n",
+      "정이라고 하자 (Feat. 10CM)\n",
+      "질주 (2 Baddies)\n",
+      "봄날\n",
+      "That That (prod. & feat. SUGA of BTS)\n",
+      "사랑해도 될까요\n",
+      "오르트구름\n",
+      "Faster\n",
+      "ELEVEN\n",
+      "자격지심 (Feat. ZICO)\n",
+      "윤슬 (Gold Dust)\n",
+      "다정히 내 이름을 부르면\n",
+      "Butter\n",
+      "딱 10CM만\n",
+      "Designer\n",
+      "Time Lapse\n",
+      "모든 날, 모든 순간 (Every day, Every Moment)\n",
+      "불시착 (Crash Landing)\n",
+      "나의 X에게\n",
+      "STAY\n",
+      "흑백 영화 (Black Clouds)\n",
+      "WHEN I MOVE\n",
+      "Playback\n",
+      "떠나보낼 준비해 둘걸 그랬어\n",
+      "Tasty (貘)\n",
+      "Vitamin\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in range(len(tbody.find_elements(By.TAG_NAME,'tr'))):\n",
+    "    print(tbody.find_elements(By.TAG_NAME,'tr')[i].find_element(By.CLASS_NAME,'ellipsis.rank01').text)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "4aa9696b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'NewJeans'"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "tbody.find_elements(By.TAG_NAME,'tr')[0].find_element(By.CLASS_NAME,'ellipsis.rank02').text"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "5bd0c526",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "NewJeans\n",
+      "NewJeans\n",
+      "NewJeans\n",
+      "부석순 (SEVENTEEN)\n",
+      "태양\n",
+      "윤하 (YOUNHA)\n",
+      "투모로우바이투게더\n",
+      "LE SSERAFIM (르세라핌)\n",
+      "임영웅\n",
+      "NewJeans\n",
+      "부석순 (SEVENTEEN)\n",
+      "임영웅\n",
+      "부석순 (SEVENTEEN)\n",
+      "IVE (아이브)\n",
+      "NCT DREAM\n",
+      "임영웅\n",
+      "NCT 127\n",
+      "투모로우바이투게더\n",
+      "임영웅\n",
+      "투모로우바이투게더\n",
+      "임영웅\n",
+      "임영웅\n",
+      "임영웅\n",
+      "투모로우바이투게더\n",
+      "임영웅\n",
+      "투모로우바이투게더\n",
+      "IVE (아이브)\n",
+      "임영웅\n",
+      "(여자)아이들\n",
+      "세븐틴\n",
+      "임영웅\n",
+      "이영지\n",
+      "임영웅\n",
+      "부석순 (SEVENTEEN)\n",
+      "임영웅\n",
+      "Charlie Puth\n",
+      "임영웅\n",
+      "신예영\n",
+      "세븐틴\n",
+      "테이\n",
+      "지코 (ZICO)\n",
+      "성시경\n",
+      "NewJeans\n",
+      "임영웅\n",
+      "Crush\n",
+      "#안녕\n",
+      "투모로우바이투게더\n",
+      "멜로망스\n",
+      "세븐틴\n",
+      "투모로우바이투게더\n",
+      "NCT 127\n",
+      "투모로우바이투게더\n",
+      "BLACKPINK\n",
+      "투모로우바이투게더\n",
+      "우디 (Woody)\n",
+      "세븐틴\n",
+      "송하예\n",
+      "세븐틴\n",
+      "정국, 방탄소년단\n",
+      "저스디스 (JUSTHIS), R.Tee, 던말릭 (DON MALIK), 허성현 (Huh), KHAN, 맥대디 (Mckdaddy), 로스 (Los)\n",
+      "신예영\n",
+      "(여자)아이들\n",
+      "BLACKPINK\n",
+      "LE SSERAFIM (르세라핌)\n",
+      "주호\n",
+      "NCT 127\n",
+      "방탄소년단\n",
+      "이예준\n",
+      "김민석 (멜로망스)\n",
+      "주호\n",
+      "최유리\n",
+      "Sam Smith, Kim Petras\n",
+      "Charlie Puth\n",
+      "WSG워너비 (가야G)\n",
+      "10CM\n",
+      "BIG Naughty (서동현)\n",
+      "NCT 127\n",
+      "방탄소년단\n",
+      "싸이 (PSY)\n",
+      "양다일\n",
+      "윤하 (YOUNHA)\n",
+      "NCT 127\n",
+      "IVE (아이브)\n",
+      "BE'O (비오)\n",
+      "NCT 127\n",
+      "경서예지, 전건호\n",
+      "방탄소년단\n",
+      "10CM, BIG Naughty (서동현)\n",
+      "NCT 127\n",
+      "NCT 127\n",
+      "폴킴\n",
+      "NCT 127\n",
+      "경서\n",
+      "The Kid LAROI, Justin Bieber\n",
+      "NCT 127\n",
+      "카라\n",
+      "NCT 127\n",
+      "임한별\n",
+      "NCT 127\n",
+      "NCT 127\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in range(len(tbody.find_elements(By.TAG_NAME,'tr'))):\n",
+    "    print(tbody.find_elements(By.TAG_NAME,'tr')[i].find_element(By.CLASS_NAME,'ellipsis.rank02').text)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "99acd772",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "NewJeans 'OMG'\n",
+      "NewJeans 'OMG'\n",
+      "NewJeans 1st EP 'New Jeans'\n",
+      "부석순 1st Single Album 'SECOND WIND'\n",
+      "VIBE (feat. Jimin of BTS)\n",
+      "YOUNHA 6th Album Repackage 'END THEORY : Final Edition'\n",
+      "이름의 장: TEMPTATION\n",
+      "ANTIFRAGILE\n",
+      "신사와 아가씨 OST Part.2\n",
+      "NewJeans 1st EP 'New Jeans'\n",
+      "부석순 1st Single Album 'SECOND WIND'\n",
+      "IM HERO\n",
+      "부석순 1st Single Album 'SECOND WIND'\n",
+      "After LIKE\n",
+      "Candy - Winter Special Mini Album\n",
+      "IM HERO\n",
+      "Ay-Yo - The 4th Album Repackage\n",
+      "이름의 장: TEMPTATION\n",
+      "Polaroid\n",
+      "이름의 장: TEMPTATION\n",
+      "Polaroid\n",
+      "IM HERO\n",
+      "내일은 미스터트롯 우승자 특전곡\n",
+      "이름의 장: TEMPTATION\n",
+      "IM HERO\n",
+      "이름의 장: TEMPTATION\n",
+      "LOVE DIVE\n",
+      "IM HERO\n",
+      "I love\n",
+      "SEVENTEEN 4th Album 'Face the Sun'\n",
+      "IM HERO\n",
+      "쇼미더머니 11 Episode 3\n",
+      "IM HERO\n",
+      "부석순 Digital Single '거침없이'\n",
+      "IM HERO\n",
+      "CHARLIE\n",
+      "IM HERO\n",
+      "마지막 사랑\n",
+      "SEVENTEEN 4th Album Repackage ‘SECTOR 17'\n",
+      "Monologue\n",
+      "스트릿 맨 파이터(SMF) Original Vol.3 (계급미션)\n",
+      "별에서 온 그대 OST Part.7\n",
+      "NewJeans 1st EP 'New Jeans'\n",
+      "IM HERO\n",
+      "Rush Hour\n",
+      "해요 (2022)\n",
+      "minisode 2: Thursday's Child\n",
+      "사랑인가 봐 (사내맞선 OST 스페셜 트랙)\n",
+      "SEVENTEEN 4th Album Repackage ‘SECTOR 17'\n",
+      "혼돈의 장: FIGHT OR ESCAPE\n",
+      "Ay-Yo - The 4th Album Repackage\n",
+      "혼돈의 장: FIGHT OR ESCAPE\n",
+      "BORN PINK\n",
+      "혼돈의 장: FREEZE\n",
+      "Say I Love You (Re : WIND 4MEN Vol.04)\n",
+      "SEVENTEEN 4th Album Repackage ‘SECTOR 17'\n",
+      "그대를 알고\n",
+      "SEVENTEEN 4th Album Repackage ‘SECTOR 17'\n",
+      "Dreamers [Music from the FIFA World Cup Qatar 2022 Official Soundtrack]\n",
+      "쇼미더머니 11 Episode 1\n",
+      "혼잣말 獨白\n",
+      "I NEVER DIE\n",
+      "BORN PINK\n",
+      "FEARLESS\n",
+      "잘가요\n",
+      "Ay-Yo - The 4th Album Repackage\n",
+      "Dynamite (DayTime Version)\n",
+      "니 번호가 뜨는 일\n",
+      "취중고백\n",
+      "내가 아니라도\n",
+      "그댄 행복에 살텐데 (2022)\n",
+      "Gloria\n",
+      "CHARLIE\n",
+      "WSG워너비 1집\n",
+      "5.3\n",
+      "정이라고 하자\n",
+      "Ay-Yo - The 4th Album Repackage\n",
+      "YOU NEVER WALK ALONE\n",
+      "싸다9\n",
+      "사랑해도 될까요\n",
+      "YOUNHA 6th Album 'END THEORY'\n",
+      "Ay-Yo - The 4th Album Repackage\n",
+      "ELEVEN\n",
+      "FIVE SENSES\n",
+      "Ay-Yo - The 4th Album Repackage\n",
+      "다정히 내 이름을 부르면 (경서예지 x 전건호)\n",
+      "Butter\n",
+      "딱 10CM만\n",
+      "Ay-Yo - The 4th Album Repackage\n",
+      "Ay-Yo - The 4th Album Repackage\n",
+      "'키스 먼저 할까요?' OST Part.3\n",
+      "Ay-Yo - The 4th Album Repackage\n",
+      "나의 X에게\n",
+      "Stay\n",
+      "Ay-Yo - The 4th Album Repackage\n",
+      "MOVE AGAIN\n",
+      "Ay-Yo - The 4th Album Repackage\n",
+      "떠나보낼 준비해 둘걸 그랬어\n",
+      "Ay-Yo - The 4th Album Repackage\n",
+      "Ay-Yo - The 4th Album Repackage\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in range(len(tbody.find_elements(By.TAG_NAME,'tr'))):\n",
+    "    print(tbody.find_elements(By.TAG_NAME,'tr')[i].find_element(By.CLASS_NAME,'ellipsis.rank03').text)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "b2ebcbef",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "212,224\n",
+      "131,327\n",
+      "228,059\n",
+      "50,198\n",
+      "75,724\n",
+      "276,120\n",
+      "75,006\n",
+      "143,396\n",
+      "188,641\n",
+      "207,081\n",
+      "34,139\n",
+      "87,579\n",
+      "31,063\n",
+      "215,296\n",
+      "130,194\n",
+      "70,786\n",
+      "48,629\n",
+      "52,944\n",
+      "44,304\n",
+      "50,450\n",
+      "40,143\n",
+      "58,718\n",
+      "164,505\n",
+      "47,870\n",
+      "48,951\n",
+      "47,801\n",
+      "225,094\n",
+      "47,019\n",
+      "152,228\n",
+      "104,981\n",
+      "45,867\n",
+      "84,822\n",
+      "45,325\n",
+      "69,365\n",
+      "46,352\n",
+      "99,673\n",
+      "44,458\n",
+      "14,723\n",
+      "76,271\n",
+      "74,696\n",
+      "141,308\n",
+      "250,156\n",
+      "122,229\n",
+      "43,642\n",
+      "103,095\n",
+      "70,415\n",
+      "73,671\n",
+      "173,871\n",
+      "56,421\n",
+      "79,884\n",
+      "28,404\n",
+      "62,899\n",
+      "111,604\n",
+      "90,323\n",
+      "34,563\n",
+      "44,076\n",
+      "28,116\n",
+      "45,124\n",
+      "103,671\n",
+      "75,852\n",
+      "11,697\n",
+      "231,291\n",
+      "151,452\n",
+      "99,928\n",
+      "28,565\n",
+      "27,438\n",
+      "445,970\n",
+      "13,214\n",
+      "157,617\n",
+      "91,065\n",
+      "23,040\n",
+      "35,374\n",
+      "144,515\n",
+      "124,897\n",
+      "132,961\n",
+      "199,160\n",
+      "20,228\n",
+      "540,991\n",
+      "129,944\n",
+      "11,651\n",
+      "74,109\n",
+      "20,393\n",
+      "175,287\n",
+      "77,336\n",
+      "19,427\n",
+      "163,421\n",
+      "282,368\n",
+      "100,320\n",
+      "19,036\n",
+      "19,350\n",
+      "415,042\n",
+      "18,816\n",
+      "137,603\n",
+      "247,979\n",
+      "18,809\n",
+      "45,212\n",
+      "18,274\n",
+      "32,143\n",
+      "18,250\n",
+      "18,092\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in range(len(tbody.find_elements(By.TAG_NAME,'tr'))):\n",
+    "    print(tbody.find_elements(By.TAG_NAME,'tr')[i].find_element(By.CLASS_NAME,'cnt').text)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "id": "8dc415cd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "song_list = []\n",
+    "singer_list = []\n",
+    "album_list = []\n",
+    "like_list = []\n",
+    "for i in range(len(tbody.find_elements(By.TAG_NAME,'tr'))):\n",
+    "    song_list.append(tbody.find_elements(By.TAG_NAME,'tr')[i].find_element(By.CLASS_NAME,\"ellipsis.rank01\").text)\n",
+    "    singer_list.append(tbody.find_elements(By.TAG_NAME,'tr')[i].find_element(By.CLASS_NAME,\"ellipsis.rank02\").text)\n",
+    "    album_list.append(tbody.find_elements(By.TAG_NAME,'tr')[i].find_element(By.CLASS_NAME,\"ellipsis.rank03\").text)\n",
+    "    like_list.append(tbody.find_elements(By.TAG_NAME,'tr')[i].find_element(By.CLASS_NAME,\"cnt\").text)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "id": "df01625a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "df = pd.DataFrame({\"노래\":song_list,\"가수\":singer_list,\"앨범\":album_list,\"좋아요\":like_list})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "id": "76452416",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df.index=range(1,101)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "07a72f28",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df['순위']=range(1,101)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "id": "4ffb382d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df=df[['순위','노래','가수','앨범','좋아요']]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "id": "50cb16fd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df.reset_index(inplace=True, drop=True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "id": "05b8a976",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>순위</th>\n",
+       "      <th>노래</th>\n",
+       "      <th>가수</th>\n",
+       "      <th>앨범</th>\n",
+       "      <th>좋아요</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>1</td>\n",
+       "      <td>Ditto</td>\n",
+       "      <td>NewJeans</td>\n",
+       "      <td>NewJeans 'OMG'</td>\n",
+       "      <td>212,224</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>2</td>\n",
+       "      <td>OMG</td>\n",
+       "      <td>NewJeans</td>\n",
+       "      <td>NewJeans 'OMG'</td>\n",
+       "      <td>131,327</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>3</td>\n",
+       "      <td>Hype boy</td>\n",
+       "      <td>NewJeans</td>\n",
+       "      <td>NewJeans 1st EP 'New Jeans'</td>\n",
+       "      <td>228,059</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>4</td>\n",
+       "      <td>파이팅 해야지 (Feat. 이영지)</td>\n",
+       "      <td>부석순 (SEVENTEEN)</td>\n",
+       "      <td>부석순 1st Single Album 'SECOND WIND'</td>\n",
+       "      <td>50,198</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>5</td>\n",
+       "      <td>VIBE (feat. Jimin of BTS)</td>\n",
+       "      <td>태양</td>\n",
+       "      <td>VIBE (feat. Jimin of BTS)</td>\n",
+       "      <td>75,724</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>95</th>\n",
+       "      <td>96</td>\n",
+       "      <td>WHEN I MOVE</td>\n",
+       "      <td>카라</td>\n",
+       "      <td>MOVE AGAIN</td>\n",
+       "      <td>45,212</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>96</th>\n",
+       "      <td>97</td>\n",
+       "      <td>Playback</td>\n",
+       "      <td>NCT 127</td>\n",
+       "      <td>Ay-Yo - The 4th Album Repackage</td>\n",
+       "      <td>18,274</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>97</th>\n",
+       "      <td>98</td>\n",
+       "      <td>떠나보낼 준비해 둘걸 그랬어</td>\n",
+       "      <td>임한별</td>\n",
+       "      <td>떠나보낼 준비해 둘걸 그랬어</td>\n",
+       "      <td>32,143</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>98</th>\n",
+       "      <td>99</td>\n",
+       "      <td>Tasty (貘)</td>\n",
+       "      <td>NCT 127</td>\n",
+       "      <td>Ay-Yo - The 4th Album Repackage</td>\n",
+       "      <td>18,250</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>99</th>\n",
+       "      <td>100</td>\n",
+       "      <td>Vitamin</td>\n",
+       "      <td>NCT 127</td>\n",
+       "      <td>Ay-Yo - The 4th Album Repackage</td>\n",
+       "      <td>18,092</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>100 rows × 5 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     순위                         노래               가수  \\\n",
+       "0     1                      Ditto         NewJeans   \n",
+       "1     2                        OMG         NewJeans   \n",
+       "2     3                   Hype boy         NewJeans   \n",
+       "3     4        파이팅 해야지 (Feat. 이영지)  부석순 (SEVENTEEN)   \n",
+       "4     5  VIBE (feat. Jimin of BTS)               태양   \n",
+       "..  ...                        ...              ...   \n",
+       "95   96                WHEN I MOVE               카라   \n",
+       "96   97                   Playback          NCT 127   \n",
+       "97   98            떠나보낼 준비해 둘걸 그랬어              임한별   \n",
+       "98   99                  Tasty (貘)          NCT 127   \n",
+       "99  100                    Vitamin          NCT 127   \n",
+       "\n",
+       "                                    앨범      좋아요  \n",
+       "0                       NewJeans 'OMG'  212,224  \n",
+       "1                       NewJeans 'OMG'  131,327  \n",
+       "2          NewJeans 1st EP 'New Jeans'  228,059  \n",
+       "3   부석순 1st Single Album 'SECOND WIND'   50,198  \n",
+       "4            VIBE (feat. Jimin of BTS)   75,724  \n",
+       "..                                 ...      ...  \n",
+       "95                          MOVE AGAIN   45,212  \n",
+       "96     Ay-Yo - The 4th Album Repackage   18,274  \n",
+       "97                     떠나보낼 준비해 둘걸 그랬어   32,143  \n",
+       "98     Ay-Yo - The 4th Album Repackage   18,250  \n",
+       "99     Ay-Yo - The 4th Album Repackage   18,092  \n",
+       "\n",
+       "[100 rows x 5 columns]"
+      ]
+     },
+     "execution_count": 48,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "id": "039cfda4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df['좋아요']=df['좋아요'].apply(lambda x: x.replace(\",\",\"\"))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "id": "a5d34cff",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>순위</th>\n",
+       "      <th>노래</th>\n",
+       "      <th>가수</th>\n",
+       "      <th>앨범</th>\n",
+       "      <th>좋아요</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>1</td>\n",
+       "      <td>Ditto</td>\n",
+       "      <td>NewJeans</td>\n",
+       "      <td>NewJeans 'OMG'</td>\n",
+       "      <td>212224</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>2</td>\n",
+       "      <td>OMG</td>\n",
+       "      <td>NewJeans</td>\n",
+       "      <td>NewJeans 'OMG'</td>\n",
+       "      <td>131327</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>3</td>\n",
+       "      <td>Hype boy</td>\n",
+       "      <td>NewJeans</td>\n",
+       "      <td>NewJeans 1st EP 'New Jeans'</td>\n",
+       "      <td>228059</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>4</td>\n",
+       "      <td>파이팅 해야지 (Feat. 이영지)</td>\n",
+       "      <td>부석순 (SEVENTEEN)</td>\n",
+       "      <td>부석순 1st Single Album 'SECOND WIND'</td>\n",
+       "      <td>50198</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>5</td>\n",
+       "      <td>VIBE (feat. Jimin of BTS)</td>\n",
+       "      <td>태양</td>\n",
+       "      <td>VIBE (feat. Jimin of BTS)</td>\n",
+       "      <td>75724</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>95</th>\n",
+       "      <td>96</td>\n",
+       "      <td>WHEN I MOVE</td>\n",
+       "      <td>카라</td>\n",
+       "      <td>MOVE AGAIN</td>\n",
+       "      <td>45212</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>96</th>\n",
+       "      <td>97</td>\n",
+       "      <td>Playback</td>\n",
+       "      <td>NCT 127</td>\n",
+       "      <td>Ay-Yo - The 4th Album Repackage</td>\n",
+       "      <td>18274</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>97</th>\n",
+       "      <td>98</td>\n",
+       "      <td>떠나보낼 준비해 둘걸 그랬어</td>\n",
+       "      <td>임한별</td>\n",
+       "      <td>떠나보낼 준비해 둘걸 그랬어</td>\n",
+       "      <td>32143</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>98</th>\n",
+       "      <td>99</td>\n",
+       "      <td>Tasty (貘)</td>\n",
+       "      <td>NCT 127</td>\n",
+       "      <td>Ay-Yo - The 4th Album Repackage</td>\n",
+       "      <td>18250</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>99</th>\n",
+       "      <td>100</td>\n",
+       "      <td>Vitamin</td>\n",
+       "      <td>NCT 127</td>\n",
+       "      <td>Ay-Yo - The 4th Album Repackage</td>\n",
+       "      <td>18092</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>100 rows × 5 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     순위                         노래               가수  \\\n",
+       "0     1                      Ditto         NewJeans   \n",
+       "1     2                        OMG         NewJeans   \n",
+       "2     3                   Hype boy         NewJeans   \n",
+       "3     4        파이팅 해야지 (Feat. 이영지)  부석순 (SEVENTEEN)   \n",
+       "4     5  VIBE (feat. Jimin of BTS)               태양   \n",
+       "..  ...                        ...              ...   \n",
+       "95   96                WHEN I MOVE               카라   \n",
+       "96   97                   Playback          NCT 127   \n",
+       "97   98            떠나보낼 준비해 둘걸 그랬어              임한별   \n",
+       "98   99                  Tasty (貘)          NCT 127   \n",
+       "99  100                    Vitamin          NCT 127   \n",
+       "\n",
+       "                                    앨범     좋아요  \n",
+       "0                       NewJeans 'OMG'  212224  \n",
+       "1                       NewJeans 'OMG'  131327  \n",
+       "2          NewJeans 1st EP 'New Jeans'  228059  \n",
+       "3   부석순 1st Single Album 'SECOND WIND'   50198  \n",
+       "4            VIBE (feat. Jimin of BTS)   75724  \n",
+       "..                                 ...     ...  \n",
+       "95                          MOVE AGAIN   45212  \n",
+       "96     Ay-Yo - The 4th Album Repackage   18274  \n",
+       "97                     떠나보낼 준비해 둘걸 그랬어   32143  \n",
+       "98     Ay-Yo - The 4th Album Repackage   18250  \n",
+       "99     Ay-Yo - The 4th Album Repackage   18092  \n",
+       "\n",
+       "[100 rows x 5 columns]"
+      ]
+     },
+     "execution_count": 50,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 51,
+   "id": "82b819c5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df['좋아요']=df['좋아요'].astype(int)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "id": "7f4b8abc",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas.core.frame.DataFrame'>\n",
+      "RangeIndex: 100 entries, 0 to 99\n",
+      "Data columns (total 5 columns):\n",
+      " #   Column  Non-Null Count  Dtype \n",
+      "---  ------  --------------  ----- \n",
+      " 0   순위      100 non-null    int64 \n",
+      " 1   노래      100 non-null    object\n",
+      " 2   가수      100 non-null    object\n",
+      " 3   앨범      100 non-null    object\n",
+      " 4   좋아요     100 non-null    int64 \n",
+      "dtypes: int64(2), object(3)\n",
+      "memory usage: 4.0+ KB\n"
+     ]
+    }
+   ],
+   "source": [
+    "df.info()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "id": "e90f5262",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>순위</th>\n",
+       "      <th>노래</th>\n",
+       "      <th>가수</th>\n",
+       "      <th>앨범</th>\n",
+       "      <th>좋아요</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>1</td>\n",
+       "      <td>Ditto</td>\n",
+       "      <td>NewJeans</td>\n",
+       "      <td>NewJeans 'OMG'</td>\n",
+       "      <td>212224</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>2</td>\n",
+       "      <td>OMG</td>\n",
+       "      <td>NewJeans</td>\n",
+       "      <td>NewJeans 'OMG'</td>\n",
+       "      <td>131327</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>3</td>\n",
+       "      <td>Hype boy</td>\n",
+       "      <td>NewJeans</td>\n",
+       "      <td>NewJeans 1st EP 'New Jeans'</td>\n",
+       "      <td>228059</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>4</td>\n",
+       "      <td>파이팅 해야지 (Feat. 이영지)</td>\n",
+       "      <td>부석순 (SEVENTEEN)</td>\n",
+       "      <td>부석순 1st Single Album 'SECOND WIND'</td>\n",
+       "      <td>50198</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>5</td>\n",
+       "      <td>VIBE (feat. Jimin of BTS)</td>\n",
+       "      <td>태양</td>\n",
+       "      <td>VIBE (feat. Jimin of BTS)</td>\n",
+       "      <td>75724</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>95</th>\n",
+       "      <td>96</td>\n",
+       "      <td>WHEN I MOVE</td>\n",
+       "      <td>카라</td>\n",
+       "      <td>MOVE AGAIN</td>\n",
+       "      <td>45212</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>96</th>\n",
+       "      <td>97</td>\n",
+       "      <td>Playback</td>\n",
+       "      <td>NCT 127</td>\n",
+       "      <td>Ay-Yo - The 4th Album Repackage</td>\n",
+       "      <td>18274</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>97</th>\n",
+       "      <td>98</td>\n",
+       "      <td>떠나보낼 준비해 둘걸 그랬어</td>\n",
+       "      <td>임한별</td>\n",
+       "      <td>떠나보낼 준비해 둘걸 그랬어</td>\n",
+       "      <td>32143</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>98</th>\n",
+       "      <td>99</td>\n",
+       "      <td>Tasty (貘)</td>\n",
+       "      <td>NCT 127</td>\n",
+       "      <td>Ay-Yo - The 4th Album Repackage</td>\n",
+       "      <td>18250</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>99</th>\n",
+       "      <td>100</td>\n",
+       "      <td>Vitamin</td>\n",
+       "      <td>NCT 127</td>\n",
+       "      <td>Ay-Yo - The 4th Album Repackage</td>\n",
+       "      <td>18092</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>100 rows × 5 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "     순위                         노래               가수  \\\n",
+       "0     1                      Ditto         NewJeans   \n",
+       "1     2                        OMG         NewJeans   \n",
+       "2     3                   Hype boy         NewJeans   \n",
+       "3     4        파이팅 해야지 (Feat. 이영지)  부석순 (SEVENTEEN)   \n",
+       "4     5  VIBE (feat. Jimin of BTS)               태양   \n",
+       "..  ...                        ...              ...   \n",
+       "95   96                WHEN I MOVE               카라   \n",
+       "96   97                   Playback          NCT 127   \n",
+       "97   98            떠나보낼 준비해 둘걸 그랬어              임한별   \n",
+       "98   99                  Tasty (貘)          NCT 127   \n",
+       "99  100                    Vitamin          NCT 127   \n",
+       "\n",
+       "                                    앨범     좋아요  \n",
+       "0                       NewJeans 'OMG'  212224  \n",
+       "1                       NewJeans 'OMG'  131327  \n",
+       "2          NewJeans 1st EP 'New Jeans'  228059  \n",
+       "3   부석순 1st Single Album 'SECOND WIND'   50198  \n",
+       "4            VIBE (feat. Jimin of BTS)   75724  \n",
+       "..                                 ...     ...  \n",
+       "95                          MOVE AGAIN   45212  \n",
+       "96     Ay-Yo - The 4th Album Repackage   18274  \n",
+       "97                     떠나보낼 준비해 둘걸 그랬어   32143  \n",
+       "98     Ay-Yo - The 4th Album Repackage   18250  \n",
+       "99     Ay-Yo - The 4th Album Repackage   18092  \n",
+       "\n",
+       "[100 rows x 5 columns]"
+      ]
+     },
+     "execution_count": 53,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "id": "882ae29c",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "임영웅                                                                                  14\n",
+       "NCT 127                                                                              13\n",
+       "투모로우바이투게더                                                                             9\n",
+       "NewJeans                                                                              5\n",
+       "세븐틴                                                                                   5\n",
+       "부석순 (SEVENTEEN)                                                                       4\n",
+       "방탄소년단                                                                                 3\n",
+       "IVE (아이브)                                                                             3\n",
+       "주호                                                                                    2\n",
+       "BLACKPINK                                                                             2\n",
+       "Charlie Puth                                                                          2\n",
+       "신예영                                                                                   2\n",
+       "윤하 (YOUNHA)                                                                           2\n",
+       "LE SSERAFIM (르세라핌)                                                                    2\n",
+       "(여자)아이들                                                                               2\n",
+       "경서                                                                                    1\n",
+       "The Kid LAROI, Justin Bieber                                                          1\n",
+       "카라                                                                                    1\n",
+       "WSG워너비 (가야G)                                                                          1\n",
+       "10CM                                                                                  1\n",
+       "BIG Naughty (서동현)                                                                     1\n",
+       "싸이 (PSY)                                                                              1\n",
+       "양다일                                                                                   1\n",
+       "BE'O (비오)                                                                             1\n",
+       "경서예지, 전건호                                                                             1\n",
+       "10CM, BIG Naughty (서동현)                                                               1\n",
+       "폴킴                                                                                    1\n",
+       "최유리                                                                                   1\n",
+       "Sam Smith, Kim Petras                                                                 1\n",
+       "우디 (Woody)                                                                            1\n",
+       "김민석 (멜로망스)                                                                            1\n",
+       "이예준                                                                                   1\n",
+       "저스디스 (JUSTHIS), R.Tee, 던말릭 (DON MALIK), 허성현 (Huh), KHAN, 맥대디 (Mckdaddy), 로스 (Los)     1\n",
+       "정국, 방탄소년단                                                                             1\n",
+       "송하예                                                                                   1\n",
+       "멜로망스                                                                                  1\n",
+       "#안녕                                                                                   1\n",
+       "Crush                                                                                 1\n",
+       "성시경                                                                                   1\n",
+       "지코 (ZICO)                                                                             1\n",
+       "테이                                                                                    1\n",
+       "이영지                                                                                   1\n",
+       "NCT DREAM                                                                             1\n",
+       "태양                                                                                    1\n",
+       "임한별                                                                                   1\n",
+       "Name: 가수, dtype: int64"
+      ]
+     },
+     "execution_count": 54,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df[\"가수\"].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 57,
+   "id": "99897e76",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df_like = df.groupby('가수').sum().sort_values('좋아요', ascending=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 60,
+   "id": "abb1cced",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df_like.reset_index(inplace=True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 62,
+   "id": "7354c229",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df_like.drop(\"순위\",axis=1, inplace=True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 64,
+   "id": "360c5422",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "45"
+      ]
+     },
+     "execution_count": 64,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "len(df_like)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 68,
+   "id": "c28f45ba",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "application/vnd.plotly.v1+json": {
+       "config": {
+        "plotlyServerURL": "https://plot.ly"
+       },
+       "data": [
+        {
+         "alignmentgroup": "True",
+         "hovertemplate": "가수=%{x}<br>좋아요=%{y}<extra></extra>",
+         "legendgroup": "방탄소년단",
+         "marker": {
+          "color": "#636efa",
+          "pattern": {
+           "shape": ""
+          }
+         },
+         "name": "방탄소년단",
+         "offsetgroup": "방탄소년단",
+         "orientation": "v",
+         "showlegend": true,
+         "textposition": "auto",
+         "type": "bar",
+         "x": [
+          "방탄소년단"
+         ],
+         "xaxis": "x",
+         "y": [
+          1269329
+         ],
+         "yaxis": "y"
+        },
+        {
+         "alignmentgroup": "True",
+         "hovertemplate": "가수=%{x}<br>좋아요=%{y}<extra></extra>",
+         "legendgroup": "임영웅",
+         "marker": {
+          "color": "#EF553B",
+          "pattern": {
+           "shape": ""
+          }
+         },
+         "name": "임영웅",
+         "offsetgroup": "임영웅",
+         "orientation": "v",
+         "showlegend": true,
+         "textposition": "auto",
+         "type": "bar",
+         "x": [
+          "임영웅"
+         ],
+         "xaxis": "x",
+         "y": [
+          976290
+         ],
+         "yaxis": "y"
+        },
+        {
+         "alignmentgroup": "True",
+         "hovertemplate": "가수=%{x}<br>좋아요=%{y}<extra></extra>",
+         "legendgroup": "NewJeans",
+         "marker": {
+          "color": "#00cc96",
+          "pattern": {
+           "shape": ""
+          }
+         },
+         "name": "NewJeans",
+         "offsetgroup": "NewJeans",
+         "orientation": "v",
+         "showlegend": true,
+         "textposition": "auto",
+         "type": "bar",
+         "x": [
+          "NewJeans"
+         ],
+         "xaxis": "x",
+         "y": [
+          900920
+         ],
+         "yaxis": "y"
+        },
+        {
+         "alignmentgroup": "True",
+         "hovertemplate": "가수=%{x}<br>좋아요=%{y}<extra></extra>",
+         "legendgroup": "IVE (아이브)",
+         "marker": {
+          "color": "#ab63fa",
+          "pattern": {
+           "shape": ""
+          }
+         },
+         "name": "IVE (아이브)",
+         "offsetgroup": "IVE (아이브)",
+         "orientation": "v",
+         "showlegend": true,
+         "textposition": "auto",
+         "type": "bar",
+         "x": [
+          "IVE (아이브)"
+         ],
+         "xaxis": "x",
+         "y": [
+          615677
+         ],
+         "yaxis": "y"
+        },
+        {
+         "alignmentgroup": "True",
+         "hovertemplate": "가수=%{x}<br>좋아요=%{y}<extra></extra>",
+         "legendgroup": "투모로우바이투게더",
+         "marker": {
+          "color": "#FFA15A",
+          "pattern": {
+           "shape": ""
+          }
+         },
+         "name": "투모로우바이투게더",
+         "offsetgroup": "투모로우바이투게더",
+         "orientation": "v",
+         "showlegend": true,
+         "textposition": "auto",
+         "type": "bar",
+         "x": [
+          "투모로우바이투게더"
+         ],
+         "xaxis": "x",
+         "y": [
+          580848
+         ],
+         "yaxis": "y"
+        },
+        {
+         "alignmentgroup": "True",
+         "hovertemplate": "가수=%{x}<br>좋아요=%{y}<extra></extra>",
+         "legendgroup": "폴킴",
+         "marker": {
+          "color": "#19d3f3",
+          "pattern": {
+           "shape": ""
+          }
+         },
+         "name": "폴킴",
+         "offsetgroup": "폴킴",
+         "orientation": "v",
+         "showlegend": true,
+         "textposition": "auto",
+         "type": "bar",
+         "x": [
+          "폴킴"
+         ],
+         "xaxis": "x",
+         "y": [
+          415042
+         ],
+         "yaxis": "y"
+        },
+        {
+         "alignmentgroup": "True",
+         "hovertemplate": "가수=%{x}<br>좋아요=%{y}<extra></extra>",
+         "legendgroup": "(여자)아이들",
+         "marker": {
+          "color": "#FF6692",
+          "pattern": {
+           "shape": ""
+          }
+         },
+         "name": "(여자)아이들",
+         "offsetgroup": "(여자)아이들",
+         "orientation": "v",
+         "showlegend": true,
+         "textposition": "auto",
+         "type": "bar",
+         "x": [
+          "(여자)아이들"
+         ],
+         "xaxis": "x",
+         "y": [
+          383519
+         ],
+         "yaxis": "y"
+        },
+        {
+         "alignmentgroup": "True",
+         "hovertemplate": "가수=%{x}<br>좋아요=%{y}<extra></extra>",
+         "legendgroup": "윤하 (YOUNHA)",
+         "marker": {
+          "color": "#B6E880",
+          "pattern": {
+           "shape": ""
+          }
+         },
+         "name": "윤하 (YOUNHA)",
+         "offsetgroup": "윤하 (YOUNHA)",
+         "orientation": "v",
+         "showlegend": true,
+         "textposition": "auto",
+         "type": "bar",
+         "x": [
+          "윤하 (YOUNHA)"
+         ],
+         "xaxis": "x",
+         "y": [
+          350229
+         ],
+         "yaxis": "y"
+        },
+        {
+         "alignmentgroup": "True",
+         "hovertemplate": "가수=%{x}<br>좋아요=%{y}<extra></extra>",
+         "legendgroup": "세븐틴",
+         "marker": {
+          "color": "#FF97FF",
+          "pattern": {
+           "shape": ""
+          }
+         },
+         "name": "세븐틴",
+         "offsetgroup": "세븐틴",
+         "orientation": "v",
+         "showlegend": true,
+         "textposition": "auto",
+         "type": "bar",
+         "x": [
+          "세븐틴"
+         ],
+         "xaxis": "x",
+         "y": [
+          326873
+         ],
+         "yaxis": "y"
+        },
+        {
+         "alignmentgroup": "True",
+         "hovertemplate": "가수=%{x}<br>좋아요=%{y}<extra></extra>",
+         "legendgroup": "NCT 127",
+         "marker": {
+          "color": "#FECB52",
+          "pattern": {
+           "shape": ""
+          }
+         },
+         "name": "NCT 127",
+         "offsetgroup": "NCT 127",
+         "orientation": "v",
+         "showlegend": true,
+         "textposition": "auto",
+         "type": "bar",
+         "x": [
+          "NCT 127"
+         ],
+         "xaxis": "x",
+         "y": [
+          295146
+         ],
+         "yaxis": "y"
+        },
+        {
+         "alignmentgroup": "True",
+         "hovertemplate": "가수=%{x}<br>좋아요=%{y}<extra></extra>",
+         "legendgroup": "BLACKPINK",
+         "marker": {
+          "color": "#636efa",
+          "pattern": {
+           "shape": ""
+          }
+         },
+         "name": "BLACKPINK",
+         "offsetgroup": "BLACKPINK",
+         "orientation": "v",
+         "showlegend": true,
+         "textposition": "auto",
+         "type": "bar",
+         "x": [
+          "BLACKPINK"
+         ],
+         "xaxis": "x",
+         "y": [
+          263056
+         ],
+         "yaxis": "y"
+        }
+       ],
+       "layout": {
+        "barmode": "relative",
+        "legend": {
+         "title": {
+          "text": "가수"
+         },
+         "tracegroupgap": 0
+        },
+        "margin": {
+         "t": 60
+        },
+        "template": {
+         "data": {
+          "bar": [
+           {
+            "error_x": {
+             "color": "#2a3f5f"
+            },
+            "error_y": {
+             "color": "#2a3f5f"
+            },
+            "marker": {
+             "line": {
+              "color": "#E5ECF6",
+              "width": 0.5
+             },
+             "pattern": {
+              "fillmode": "overlay",
+              "size": 10,
+              "solidity": 0.2
+             }
+            },
+            "type": "bar"
+           }
+          ],
+          "barpolar": [
+           {
+            "marker": {
+             "line": {
+              "color": "#E5ECF6",
+              "width": 0.5
+             },
+             "pattern": {
+              "fillmode": "overlay",
+              "size": 10,
+              "solidity": 0.2
+             }
+            },
+            "type": "barpolar"
+           }
+          ],
+          "carpet": [
+           {
+            "aaxis": {
+             "endlinecolor": "#2a3f5f",
+             "gridcolor": "white",
+             "linecolor": "white",
+             "minorgridcolor": "white",
+             "startlinecolor": "#2a3f5f"
+            },
+            "baxis": {
+             "endlinecolor": "#2a3f5f",
+             "gridcolor": "white",
+             "linecolor": "white",
+             "minorgridcolor": "white",
+             "startlinecolor": "#2a3f5f"
+            },
+            "type": "carpet"
+           }
+          ],
+          "choropleth": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "type": "choropleth"
+           }
+          ],
+          "contour": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "colorscale": [
+             [
+              0,
+              "#0d0887"
+             ],
+             [
+              0.1111111111111111,
+              "#46039f"
+             ],
+             [
+              0.2222222222222222,
+              "#7201a8"
+             ],
+             [
+              0.3333333333333333,
+              "#9c179e"
+             ],
+             [
+              0.4444444444444444,
+              "#bd3786"
+             ],
+             [
+              0.5555555555555556,
+              "#d8576b"
+             ],
+             [
+              0.6666666666666666,
+              "#ed7953"
+             ],
+             [
+              0.7777777777777778,
+              "#fb9f3a"
+             ],
+             [
+              0.8888888888888888,
+              "#fdca26"
+             ],
+             [
+              1,
+              "#f0f921"
+             ]
+            ],
+            "type": "contour"
+           }
+          ],
+          "contourcarpet": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "type": "contourcarpet"
+           }
+          ],
+          "heatmap": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "colorscale": [
+             [
+              0,
+              "#0d0887"
+             ],
+             [
+              0.1111111111111111,
+              "#46039f"
+             ],
+             [
+              0.2222222222222222,
+              "#7201a8"
+             ],
+             [
+              0.3333333333333333,
+              "#9c179e"
+             ],
+             [
+              0.4444444444444444,
+              "#bd3786"
+             ],
+             [
+              0.5555555555555556,
+              "#d8576b"
+             ],
+             [
+              0.6666666666666666,
+              "#ed7953"
+             ],
+             [
+              0.7777777777777778,
+              "#fb9f3a"
+             ],
+             [
+              0.8888888888888888,
+              "#fdca26"
+             ],
+             [
+              1,
+              "#f0f921"
+             ]
+            ],
+            "type": "heatmap"
+           }
+          ],
+          "heatmapgl": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "colorscale": [
+             [
+              0,
+              "#0d0887"
+             ],
+             [
+              0.1111111111111111,
+              "#46039f"
+             ],
+             [
+              0.2222222222222222,
+              "#7201a8"
+             ],
+             [
+              0.3333333333333333,
+              "#9c179e"
+             ],
+             [
+              0.4444444444444444,
+              "#bd3786"
+             ],
+             [
+              0.5555555555555556,
+              "#d8576b"
+             ],
+             [
+              0.6666666666666666,
+              "#ed7953"
+             ],
+             [
+              0.7777777777777778,
+              "#fb9f3a"
+             ],
+             [
+              0.8888888888888888,
+              "#fdca26"
+             ],
+             [
+              1,
+              "#f0f921"
+             ]
+            ],
+            "type": "heatmapgl"
+           }
+          ],
+          "histogram": [
+           {
+            "marker": {
+             "pattern": {
+              "fillmode": "overlay",
+              "size": 10,
+              "solidity": 0.2
+             }
+            },
+            "type": "histogram"
+           }
+          ],
+          "histogram2d": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "colorscale": [
+             [
+              0,
+              "#0d0887"
+             ],
+             [
+              0.1111111111111111,
+              "#46039f"
+             ],
+             [
+              0.2222222222222222,
+              "#7201a8"
+             ],
+             [
+              0.3333333333333333,
+              "#9c179e"
+             ],
+             [
+              0.4444444444444444,
+              "#bd3786"
+             ],
+             [
+              0.5555555555555556,
+              "#d8576b"
+             ],
+             [
+              0.6666666666666666,
+              "#ed7953"
+             ],
+             [
+              0.7777777777777778,
+              "#fb9f3a"
+             ],
+             [
+              0.8888888888888888,
+              "#fdca26"
+             ],
+             [
+              1,
+              "#f0f921"
+             ]
+            ],
+            "type": "histogram2d"
+           }
+          ],
+          "histogram2dcontour": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "colorscale": [
+             [
+              0,
+              "#0d0887"
+             ],
+             [
+              0.1111111111111111,
+              "#46039f"
+             ],
+             [
+              0.2222222222222222,
+              "#7201a8"
+             ],
+             [
+              0.3333333333333333,
+              "#9c179e"
+             ],
+             [
+              0.4444444444444444,
+              "#bd3786"
+             ],
+             [
+              0.5555555555555556,
+              "#d8576b"
+             ],
+             [
+              0.6666666666666666,
+              "#ed7953"
+             ],
+             [
+              0.7777777777777778,
+              "#fb9f3a"
+             ],
+             [
+              0.8888888888888888,
+              "#fdca26"
+             ],
+             [
+              1,
+              "#f0f921"
+             ]
+            ],
+            "type": "histogram2dcontour"
+           }
+          ],
+          "mesh3d": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "type": "mesh3d"
+           }
+          ],
+          "parcoords": [
+           {
+            "line": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "parcoords"
+           }
+          ],
+          "pie": [
+           {
+            "automargin": true,
+            "type": "pie"
+           }
+          ],
+          "scatter": [
+           {
+            "fillpattern": {
+             "fillmode": "overlay",
+             "size": 10,
+             "solidity": 0.2
+            },
+            "type": "scatter"
+           }
+          ],
+          "scatter3d": [
+           {
+            "line": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scatter3d"
+           }
+          ],
+          "scattercarpet": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scattercarpet"
+           }
+          ],
+          "scattergeo": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scattergeo"
+           }
+          ],
+          "scattergl": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scattergl"
+           }
+          ],
+          "scattermapbox": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scattermapbox"
+           }
+          ],
+          "scatterpolar": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scatterpolar"
+           }
+          ],
+          "scatterpolargl": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scatterpolargl"
+           }
+          ],
+          "scatterternary": [
+           {
+            "marker": {
+             "colorbar": {
+              "outlinewidth": 0,
+              "ticks": ""
+             }
+            },
+            "type": "scatterternary"
+           }
+          ],
+          "surface": [
+           {
+            "colorbar": {
+             "outlinewidth": 0,
+             "ticks": ""
+            },
+            "colorscale": [
+             [
+              0,
+              "#0d0887"
+             ],
+             [
+              0.1111111111111111,
+              "#46039f"
+             ],
+             [
+              0.2222222222222222,
+              "#7201a8"
+             ],
+             [
+              0.3333333333333333,
+              "#9c179e"
+             ],
+             [
+              0.4444444444444444,
+              "#bd3786"
+             ],
+             [
+              0.5555555555555556,
+              "#d8576b"
+             ],
+             [
+              0.6666666666666666,
+              "#ed7953"
+             ],
+             [
+              0.7777777777777778,
+              "#fb9f3a"
+             ],
+             [
+              0.8888888888888888,
+              "#fdca26"
+             ],
+             [
+              1,
+              "#f0f921"
+             ]
+            ],
+            "type": "surface"
+           }
+          ],
+          "table": [
+           {
+            "cells": {
+             "fill": {
+              "color": "#EBF0F8"
+             },
+             "line": {
+              "color": "white"
+             }
+            },
+            "header": {
+             "fill": {
+              "color": "#C8D4E3"
+             },
+             "line": {
+              "color": "white"
+             }
+            },
+            "type": "table"
+           }
+          ]
+         },
+         "layout": {
+          "annotationdefaults": {
+           "arrowcolor": "#2a3f5f",
+           "arrowhead": 0,
+           "arrowwidth": 1
+          },
+          "autotypenumbers": "strict",
+          "coloraxis": {
+           "colorbar": {
+            "outlinewidth": 0,
+            "ticks": ""
+           }
+          },
+          "colorscale": {
+           "diverging": [
+            [
+             0,
+             "#8e0152"
+            ],
+            [
+             0.1,
+             "#c51b7d"
+            ],
+            [
+             0.2,
+             "#de77ae"
+            ],
+            [
+             0.3,
+             "#f1b6da"
+            ],
+            [
+             0.4,
+             "#fde0ef"
+            ],
+            [
+             0.5,
+             "#f7f7f7"
+            ],
+            [
+             0.6,
+             "#e6f5d0"
+            ],
+            [
+             0.7,
+             "#b8e186"
+            ],
+            [
+             0.8,
+             "#7fbc41"
+            ],
+            [
+             0.9,
+             "#4d9221"
+            ],
+            [
+             1,
+             "#276419"
+            ]
+           ],
+           "sequential": [
+            [
+             0,
+             "#0d0887"
+            ],
+            [
+             0.1111111111111111,
+             "#46039f"
+            ],
+            [
+             0.2222222222222222,
+             "#7201a8"
+            ],
+            [
+             0.3333333333333333,
+             "#9c179e"
+            ],
+            [
+             0.4444444444444444,
+             "#bd3786"
+            ],
+            [
+             0.5555555555555556,
+             "#d8576b"
+            ],
+            [
+             0.6666666666666666,
+             "#ed7953"
+            ],
+            [
+             0.7777777777777778,
+             "#fb9f3a"
+            ],
+            [
+             0.8888888888888888,
+             "#fdca26"
+            ],
+            [
+             1,
+             "#f0f921"
+            ]
+           ],
+           "sequentialminus": [
+            [
+             0,
+             "#0d0887"
+            ],
+            [
+             0.1111111111111111,
+             "#46039f"
+            ],
+            [
+             0.2222222222222222,
+             "#7201a8"
+            ],
+            [
+             0.3333333333333333,
+             "#9c179e"
+            ],
+            [
+             0.4444444444444444,
+             "#bd3786"
+            ],
+            [
+             0.5555555555555556,
+             "#d8576b"
+            ],
+            [
+             0.6666666666666666,
+             "#ed7953"
+            ],
+            [
+             0.7777777777777778,
+             "#fb9f3a"
+            ],
+            [
+             0.8888888888888888,
+             "#fdca26"
+            ],
+            [
+             1,
+             "#f0f921"
+            ]
+           ]
+          },
+          "colorway": [
+           "#636efa",
+           "#EF553B",
+           "#00cc96",
+           "#ab63fa",
+           "#FFA15A",
+           "#19d3f3",
+           "#FF6692",
+           "#B6E880",
+           "#FF97FF",
+           "#FECB52"
+          ],
+          "font": {
+           "color": "#2a3f5f"
+          },
+          "geo": {
+           "bgcolor": "white",
+           "lakecolor": "white",
+           "landcolor": "#E5ECF6",
+           "showlakes": true,
+           "showland": true,
+           "subunitcolor": "white"
+          },
+          "hoverlabel": {
+           "align": "left"
+          },
+          "hovermode": "closest",
+          "mapbox": {
+           "style": "light"
+          },
+          "paper_bgcolor": "white",
+          "plot_bgcolor": "#E5ECF6",
+          "polar": {
+           "angularaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+           },
+           "bgcolor": "#E5ECF6",
+           "radialaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+           }
+          },
+          "scene": {
+           "xaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "gridwidth": 2,
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white"
+           },
+           "yaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "gridwidth": 2,
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white"
+           },
+           "zaxis": {
+            "backgroundcolor": "#E5ECF6",
+            "gridcolor": "white",
+            "gridwidth": 2,
+            "linecolor": "white",
+            "showbackground": true,
+            "ticks": "",
+            "zerolinecolor": "white"
+           }
+          },
+          "shapedefaults": {
+           "line": {
+            "color": "#2a3f5f"
+           }
+          },
+          "ternary": {
+           "aaxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+           },
+           "baxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+           },
+           "bgcolor": "#E5ECF6",
+           "caxis": {
+            "gridcolor": "white",
+            "linecolor": "white",
+            "ticks": ""
+           }
+          },
+          "title": {
+           "x": 0.05
+          },
+          "xaxis": {
+           "automargin": true,
+           "gridcolor": "white",
+           "linecolor": "white",
+           "ticks": "",
+           "title": {
+            "standoff": 15
+           },
+           "zerolinecolor": "white",
+           "zerolinewidth": 2
+          },
+          "yaxis": {
+           "automargin": true,
+           "gridcolor": "white",
+           "linecolor": "white",
+           "ticks": "",
+           "title": {
+            "standoff": 15
+           },
+           "zerolinecolor": "white",
+           "zerolinewidth": 2
+          }
+         }
+        },
+        "xaxis": {
+         "anchor": "y",
+         "categoryarray": [
+          "방탄소년단",
+          "임영웅",
+          "NewJeans",
+          "IVE (아이브)",
+          "투모로우바이투게더",
+          "폴킴",
+          "(여자)아이들",
+          "윤하 (YOUNHA)",
+          "세븐틴",
+          "NCT 127",
+          "BLACKPINK"
+         ],
+         "categoryorder": "array",
+         "domain": [
+          0,
+          1
+         ],
+         "title": {
+          "text": "가수"
+         }
+        },
+        "yaxis": {
+         "anchor": "x",
+         "domain": [
+          0,
+          1
+         ],
+         "title": {
+          "text": "좋아요"
+         }
+        }
+       }
+      },
+      "text/html": [
+       "<div>                            <div id=\"4e50d89e-d547-4532-83d9-fb23c1c8b3c0\" class=\"plotly-graph-div\" style=\"height:525px; width:100%;\"></div>            <script type=\"text/javascript\">                require([\"plotly\"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById(\"4e50d89e-d547-4532-83d9-fb23c1c8b3c0\")) {                    Plotly.newPlot(                        \"4e50d89e-d547-4532-83d9-fb23c1c8b3c0\",                        [{\"alignmentgroup\":\"True\",\"hovertemplate\":\"\\uac00\\uc218=%{x}<br>\\uc88b\\uc544\\uc694=%{y}<extra></extra>\",\"legendgroup\":\"\\ubc29\\ud0c4\\uc18c\\ub144\\ub2e8\",\"marker\":{\"color\":\"#636efa\",\"pattern\":{\"shape\":\"\"}},\"name\":\"\\ubc29\\ud0c4\\uc18c\\ub144\\ub2e8\",\"offsetgroup\":\"\\ubc29\\ud0c4\\uc18c\\ub144\\ub2e8\",\"orientation\":\"v\",\"showlegend\":true,\"textposition\":\"auto\",\"x\":[\"\\ubc29\\ud0c4\\uc18c\\ub144\\ub2e8\"],\"xaxis\":\"x\",\"y\":[1269329],\"yaxis\":\"y\",\"type\":\"bar\"},{\"alignmentgroup\":\"True\",\"hovertemplate\":\"\\uac00\\uc218=%{x}<br>\\uc88b\\uc544\\uc694=%{y}<extra></extra>\",\"legendgroup\":\"\\uc784\\uc601\\uc6c5\",\"marker\":{\"color\":\"#EF553B\",\"pattern\":{\"shape\":\"\"}},\"name\":\"\\uc784\\uc601\\uc6c5\",\"offsetgroup\":\"\\uc784\\uc601\\uc6c5\",\"orientation\":\"v\",\"showlegend\":true,\"textposition\":\"auto\",\"x\":[\"\\uc784\\uc601\\uc6c5\"],\"xaxis\":\"x\",\"y\":[976290],\"yaxis\":\"y\",\"type\":\"bar\"},{\"alignmentgroup\":\"True\",\"hovertemplate\":\"\\uac00\\uc218=%{x}<br>\\uc88b\\uc544\\uc694=%{y}<extra></extra>\",\"legendgroup\":\"NewJeans\",\"marker\":{\"color\":\"#00cc96\",\"pattern\":{\"shape\":\"\"}},\"name\":\"NewJeans\",\"offsetgroup\":\"NewJeans\",\"orientation\":\"v\",\"showlegend\":true,\"textposition\":\"auto\",\"x\":[\"NewJeans\"],\"xaxis\":\"x\",\"y\":[900920],\"yaxis\":\"y\",\"type\":\"bar\"},{\"alignmentgroup\":\"True\",\"hovertemplate\":\"\\uac00\\uc218=%{x}<br>\\uc88b\\uc544\\uc694=%{y}<extra></extra>\",\"legendgroup\":\"IVE (\\uc544\\uc774\\ube0c)\",\"marker\":{\"color\":\"#ab63fa\",\"pattern\":{\"shape\":\"\"}},\"name\":\"IVE (\\uc544\\uc774\\ube0c)\",\"offsetgroup\":\"IVE (\\uc544\\uc774\\ube0c)\",\"orientation\":\"v\",\"showlegend\":true,\"textposition\":\"auto\",\"x\":[\"IVE (\\uc544\\uc774\\ube0c)\"],\"xaxis\":\"x\",\"y\":[615677],\"yaxis\":\"y\",\"type\":\"bar\"},{\"alignmentgroup\":\"True\",\"hovertemplate\":\"\\uac00\\uc218=%{x}<br>\\uc88b\\uc544\\uc694=%{y}<extra></extra>\",\"legendgroup\":\"\\ud22c\\ubaa8\\ub85c\\uc6b0\\ubc14\\uc774\\ud22c\\uac8c\\ub354\",\"marker\":{\"color\":\"#FFA15A\",\"pattern\":{\"shape\":\"\"}},\"name\":\"\\ud22c\\ubaa8\\ub85c\\uc6b0\\ubc14\\uc774\\ud22c\\uac8c\\ub354\",\"offsetgroup\":\"\\ud22c\\ubaa8\\ub85c\\uc6b0\\ubc14\\uc774\\ud22c\\uac8c\\ub354\",\"orientation\":\"v\",\"showlegend\":true,\"textposition\":\"auto\",\"x\":[\"\\ud22c\\ubaa8\\ub85c\\uc6b0\\ubc14\\uc774\\ud22c\\uac8c\\ub354\"],\"xaxis\":\"x\",\"y\":[580848],\"yaxis\":\"y\",\"type\":\"bar\"},{\"alignmentgroup\":\"True\",\"hovertemplate\":\"\\uac00\\uc218=%{x}<br>\\uc88b\\uc544\\uc694=%{y}<extra></extra>\",\"legendgroup\":\"\\ud3f4\\ud0b4\",\"marker\":{\"color\":\"#19d3f3\",\"pattern\":{\"shape\":\"\"}},\"name\":\"\\ud3f4\\ud0b4\",\"offsetgroup\":\"\\ud3f4\\ud0b4\",\"orientation\":\"v\",\"showlegend\":true,\"textposition\":\"auto\",\"x\":[\"\\ud3f4\\ud0b4\"],\"xaxis\":\"x\",\"y\":[415042],\"yaxis\":\"y\",\"type\":\"bar\"},{\"alignmentgroup\":\"True\",\"hovertemplate\":\"\\uac00\\uc218=%{x}<br>\\uc88b\\uc544\\uc694=%{y}<extra></extra>\",\"legendgroup\":\"(\\uc5ec\\uc790)\\uc544\\uc774\\ub4e4\",\"marker\":{\"color\":\"#FF6692\",\"pattern\":{\"shape\":\"\"}},\"name\":\"(\\uc5ec\\uc790)\\uc544\\uc774\\ub4e4\",\"offsetgroup\":\"(\\uc5ec\\uc790)\\uc544\\uc774\\ub4e4\",\"orientation\":\"v\",\"showlegend\":true,\"textposition\":\"auto\",\"x\":[\"(\\uc5ec\\uc790)\\uc544\\uc774\\ub4e4\"],\"xaxis\":\"x\",\"y\":[383519],\"yaxis\":\"y\",\"type\":\"bar\"},{\"alignmentgroup\":\"True\",\"hovertemplate\":\"\\uac00\\uc218=%{x}<br>\\uc88b\\uc544\\uc694=%{y}<extra></extra>\",\"legendgroup\":\"\\uc724\\ud558 (YOUNHA)\",\"marker\":{\"color\":\"#B6E880\",\"pattern\":{\"shape\":\"\"}},\"name\":\"\\uc724\\ud558 (YOUNHA)\",\"offsetgroup\":\"\\uc724\\ud558 (YOUNHA)\",\"orientation\":\"v\",\"showlegend\":true,\"textposition\":\"auto\",\"x\":[\"\\uc724\\ud558 (YOUNHA)\"],\"xaxis\":\"x\",\"y\":[350229],\"yaxis\":\"y\",\"type\":\"bar\"},{\"alignmentgroup\":\"True\",\"hovertemplate\":\"\\uac00\\uc218=%{x}<br>\\uc88b\\uc544\\uc694=%{y}<extra></extra>\",\"legendgroup\":\"\\uc138\\ube10\\ud2f4\",\"marker\":{\"color\":\"#FF97FF\",\"pattern\":{\"shape\":\"\"}},\"name\":\"\\uc138\\ube10\\ud2f4\",\"offsetgroup\":\"\\uc138\\ube10\\ud2f4\",\"orientation\":\"v\",\"showlegend\":true,\"textposition\":\"auto\",\"x\":[\"\\uc138\\ube10\\ud2f4\"],\"xaxis\":\"x\",\"y\":[326873],\"yaxis\":\"y\",\"type\":\"bar\"},{\"alignmentgroup\":\"True\",\"hovertemplate\":\"\\uac00\\uc218=%{x}<br>\\uc88b\\uc544\\uc694=%{y}<extra></extra>\",\"legendgroup\":\"NCT 127\",\"marker\":{\"color\":\"#FECB52\",\"pattern\":{\"shape\":\"\"}},\"name\":\"NCT 127\",\"offsetgroup\":\"NCT 127\",\"orientation\":\"v\",\"showlegend\":true,\"textposition\":\"auto\",\"x\":[\"NCT 127\"],\"xaxis\":\"x\",\"y\":[295146],\"yaxis\":\"y\",\"type\":\"bar\"},{\"alignmentgroup\":\"True\",\"hovertemplate\":\"\\uac00\\uc218=%{x}<br>\\uc88b\\uc544\\uc694=%{y}<extra></extra>\",\"legendgroup\":\"BLACKPINK\",\"marker\":{\"color\":\"#636efa\",\"pattern\":{\"shape\":\"\"}},\"name\":\"BLACKPINK\",\"offsetgroup\":\"BLACKPINK\",\"orientation\":\"v\",\"showlegend\":true,\"textposition\":\"auto\",\"x\":[\"BLACKPINK\"],\"xaxis\":\"x\",\"y\":[263056],\"yaxis\":\"y\",\"type\":\"bar\"}],                        {\"template\":{\"data\":{\"histogram2dcontour\":[{\"type\":\"histogram2dcontour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"choropleth\":[{\"type\":\"choropleth\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"histogram2d\":[{\"type\":\"histogram2d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"heatmap\":[{\"type\":\"heatmap\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"heatmapgl\":[{\"type\":\"heatmapgl\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"contourcarpet\":[{\"type\":\"contourcarpet\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"contour\":[{\"type\":\"contour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"surface\":[{\"type\":\"surface\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"mesh3d\":[{\"type\":\"mesh3d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"scatter\":[{\"fillpattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2},\"type\":\"scatter\"}],\"parcoords\":[{\"type\":\"parcoords\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolargl\":[{\"type\":\"scatterpolargl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"bar\":[{\"error_x\":{\"color\":\"#2a3f5f\"},\"error_y\":{\"color\":\"#2a3f5f\"},\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"bar\"}],\"scattergeo\":[{\"type\":\"scattergeo\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolar\":[{\"type\":\"scatterpolar\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"histogram\":[{\"marker\":{\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"histogram\"}],\"scattergl\":[{\"type\":\"scattergl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatter3d\":[{\"type\":\"scatter3d\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermapbox\":[{\"type\":\"scattermapbox\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterternary\":[{\"type\":\"scatterternary\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattercarpet\":[{\"type\":\"scattercarpet\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"carpet\":[{\"aaxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"baxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"type\":\"carpet\"}],\"table\":[{\"cells\":{\"fill\":{\"color\":\"#EBF0F8\"},\"line\":{\"color\":\"white\"}},\"header\":{\"fill\":{\"color\":\"#C8D4E3\"},\"line\":{\"color\":\"white\"}},\"type\":\"table\"}],\"barpolar\":[{\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"barpolar\"}],\"pie\":[{\"automargin\":true,\"type\":\"pie\"}]},\"layout\":{\"autotypenumbers\":\"strict\",\"colorway\":[\"#636efa\",\"#EF553B\",\"#00cc96\",\"#ab63fa\",\"#FFA15A\",\"#19d3f3\",\"#FF6692\",\"#B6E880\",\"#FF97FF\",\"#FECB52\"],\"font\":{\"color\":\"#2a3f5f\"},\"hovermode\":\"closest\",\"hoverlabel\":{\"align\":\"left\"},\"paper_bgcolor\":\"white\",\"plot_bgcolor\":\"#E5ECF6\",\"polar\":{\"bgcolor\":\"#E5ECF6\",\"angularaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"radialaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"ternary\":{\"bgcolor\":\"#E5ECF6\",\"aaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"baxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"caxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"coloraxis\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"colorscale\":{\"sequential\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"sequentialminus\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"diverging\":[[0,\"#8e0152\"],[0.1,\"#c51b7d\"],[0.2,\"#de77ae\"],[0.3,\"#f1b6da\"],[0.4,\"#fde0ef\"],[0.5,\"#f7f7f7\"],[0.6,\"#e6f5d0\"],[0.7,\"#b8e186\"],[0.8,\"#7fbc41\"],[0.9,\"#4d9221\"],[1,\"#276419\"]]},\"xaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"yaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"scene\":{\"xaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"yaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"zaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2}},\"shapedefaults\":{\"line\":{\"color\":\"#2a3f5f\"}},\"annotationdefaults\":{\"arrowcolor\":\"#2a3f5f\",\"arrowhead\":0,\"arrowwidth\":1},\"geo\":{\"bgcolor\":\"white\",\"landcolor\":\"#E5ECF6\",\"subunitcolor\":\"white\",\"showland\":true,\"showlakes\":true,\"lakecolor\":\"white\"},\"title\":{\"x\":0.05},\"mapbox\":{\"style\":\"light\"}}},\"xaxis\":{\"anchor\":\"y\",\"domain\":[0.0,1.0],\"title\":{\"text\":\"\\uac00\\uc218\"},\"categoryorder\":\"array\",\"categoryarray\":[\"\\ubc29\\ud0c4\\uc18c\\ub144\\ub2e8\",\"\\uc784\\uc601\\uc6c5\",\"NewJeans\",\"IVE (\\uc544\\uc774\\ube0c)\",\"\\ud22c\\ubaa8\\ub85c\\uc6b0\\ubc14\\uc774\\ud22c\\uac8c\\ub354\",\"\\ud3f4\\ud0b4\",\"(\\uc5ec\\uc790)\\uc544\\uc774\\ub4e4\",\"\\uc724\\ud558 (YOUNHA)\",\"\\uc138\\ube10\\ud2f4\",\"NCT 127\",\"BLACKPINK\"]},\"yaxis\":{\"anchor\":\"x\",\"domain\":[0.0,1.0],\"title\":{\"text\":\"\\uc88b\\uc544\\uc694\"}},\"legend\":{\"title\":{\"text\":\"\\uac00\\uc218\"},\"tracegroupgap\":0},\"margin\":{\"t\":60},\"barmode\":\"relative\"},                        {\"responsive\": true}                    ).then(function(){\n",
+       "                            \n",
+       "var gd = document.getElementById('4e50d89e-d547-4532-83d9-fb23c1c8b3c0');\n",
+       "var x = new MutationObserver(function (mutations, observer) {{\n",
+       "        var display = window.getComputedStyle(gd).display;\n",
+       "        if (!display || display === 'none') {{\n",
+       "            console.log([gd, 'removed!']);\n",
+       "            Plotly.purge(gd);\n",
+       "            observer.disconnect();\n",
+       "        }}\n",
+       "}});\n",
+       "\n",
+       "// Listen for the removal of the full notebook cells\n",
+       "var notebookContainer = gd.closest('#notebook-container');\n",
+       "if (notebookContainer) {{\n",
+       "    x.observe(notebookContainer, {childList: true});\n",
+       "}}\n",
+       "\n",
+       "// Listen for the clearing of the current output cell\n",
+       "var outputEl = gd.closest('.output');\n",
+       "if (outputEl) {{\n",
+       "    x.observe(outputEl, {childList: true});\n",
+       "}}\n",
+       "\n",
+       "                        })                };                });            </script>        </div>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "import plotly.express as px\n",
+    "fig = px.bar(df_like.loc[:10], x='가수', y='좋아요', color='가수')\n",
+    "fig.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "72b81162",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.13"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
